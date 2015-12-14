@@ -42,6 +42,12 @@ the data pipeline.
 
 ### MQTT
 
+// TODO for data relaying
+
+### Data persistence
+
+// TODO for data persisting
+
 ### REST API 
 
 // TODO for data polling
