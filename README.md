@@ -5,12 +5,13 @@ Pi and sensors available.
 
 ## Prerequisite
 
-Every team disposes following materials:
+Every group disposes following materials:
 
 - A Raspberry Pi Model B+
 - A sensor (TBD)
 - An empty Simcard
 - A breadboard and some cables
+- Wifi keys (or Ethernet cable, TBD)
 
 ## Step 1: Prepare your Raspberry Pi
 
