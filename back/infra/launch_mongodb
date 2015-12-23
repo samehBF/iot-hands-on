@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+function mesg {
+	echo -en "\033[38;5;${1}m${2}\033[39m"
+}
+
+function mesgnl {
+	echo -e "\033[38;5;${1}m${2}\033[39m"
+}
+
+function exitIfError {
+	if [ $1 -gt 0 ]; then
+		mesgnl 9 "\b\b\b\t KO"
+		exit $1
+	else
+		mesgnl 10 "\b\b\b\t OK"
+	fi
+}
+
+#check mongo
+mesg 4 "Checking if mongod is in PATH..."
+which mongod > /dev/null 2>&1
+exitIfError $?
+
+mesg 4 "Checking if mongoimport is in PATH..."
+which mongoimport > /dev/null 2>&1
+exitIfError $?
+
+mesg 4 "Checking if MongoDB version >= 3..."
+mongodb_version=$(mongod --version | grep "db version" | cut -f 3 -d ' ')
+[[ $mongodb_version == v3.* ]]
+exitIfError $?
+
+
+#root
+DEFAULT_ROOT=./
+
+if [ "$1" = "" ]; then
+	root=$DEFAULT_ROOT
+else
+	root=$1
+fi
+
+mesg 4 "MongoDB root: "
+mesgnl 6 $root
+
+#data dir
+DATA_DIR="${root}/data"
+LOG_DIR="${root}/logs"
+
+mesg 4 "Creating data dir if needed: "
+mesg 6 "$DATA_DIR"
+mesg 4 "..."
+mkdir -p "$DATA_DIR"
+exitIfError $?
+
+#log dir
+mesg 4 "Creating log dir if needed: "
+mesg 6 "$LOG_DIR"
+mesg 4 "..."
+mkdir -p "$LOG_DIR"
+exitIfError $?
+
+#mongodb launch
+mesg 4 "launching a standalone mongod..."
+## --pidfilepath "${root}/mongod.pid" not working
+mongod --dbpath "${DATA_DIR}" --logpath "${LOG_DIR}/mongod.log" --storageEngine wiredTiger --wiredTigerJournalCompressor zlib --wiredTigerCollectionBlockCompressor zlib --wiredTigerIndexPrefixCompression true --smallfiles --oplogSize 200 --fork 1> "${LOG_DIR}/mongod-stdout.log" 2> "${LOG_DIR}/mongod-stderr.log" 
+exitIfError $?
+
+
+#TODO Do we importing data ?
