@@ -16,21 +16,56 @@ Every group disposes following materials:
 ## Step 1: Prepare your Raspberry Pi
 
 - [Set up your Raspberry Pi with Noobs](https://www.raspberrypi.org/help/noobs-setup/)
-- Set up development environment on Raspberry Pi (Choice between Python or C++)
+- Set up python development environment on Raspberry Pi
 
 ### Python
 
-// TODO
+- Update and Upgrade you PI firmware:
+```
+$ sudo apt-get update
+$ sudo apt-get upgrade
+```
 
-### C++
+- Install python environment:
+```
+$ python -V 
+$ sudo apt-get install python-dev python-pip python-setuptools
+```
 
-// TODO (Maybe for the next time)
+- Install [WiringPi](http://wiringpi.com/)'s python wrapper [WiringPi-Python](https://github.com/WiringPi/WiringPi-Python). 
+It is used for reading from / writing to GPIO pins in a similar way to arduino, 
+a good alternative to [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO).
+```
+$ sudo pip install wiringpi2
+```
 
-## Step 2: Play with the sensor
+- After the installation, check if the library is well installed. In the python 
+interactive shell, import module and check version. `piBoardRev()` should display
+value `2`:
 
-- Get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
-	- Reference: [Pinout map](http://pinout.xyz/)
-- Connect the sensor with the Pi and start to play
+```
+$ python
+>> import wiringpi2 as wiringpi
+>> wiringpi.piBoardRev()
+```
+
+- Install [Adafruit Python DHT library](https://github.com/adafruit/Adafruit_Python_DHT) 
+which will be used to read the value of the temperature & humidity sensor.
+
+- Install [paho-mqtt](https://pypi.python.org/pypi/paho-mqtt/1.1) Lib:
+```
+$ sudo pip install paho-mqtt
+```
+
+## Step 2: Read data from your sensor
+
+Get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
+or with some more interactive [Pinout map](http://pinout.xyz/).
+
+- Plug the sensor to your Raspberry Pi:
+	- VCC to Pin 2
+	- GND to Pin 6
+	- Input to GPIO23 (Pin 16)
 
 ### Example
 
@@ -38,25 +73,17 @@ Every group disposes following materials:
 
 ## Step 3: Build the pipeline
 
-This part focus on explaining how we use MQTT and simple REST service to build 
+This part focus on explaining how we use MQTT and AWS IoT to build 
 the data pipeline.
 
 ### MQTT
 
-// TODO for data relaying
+// TODO publish data to MQTT broker
 
-### Data persistence
+### AWS IoT
 
-// TODO for data persisting
-
-### REST API 
-
-// TODO for data polling
-
-### WebSocket
-
-// TODO for data pushing
+// TODO subscribe to the MQTT broker to get the message published by the pi
 
 ## Step 4: Display your data
 
-// TODO build your dashboard
+// TODO push data to dashboard
