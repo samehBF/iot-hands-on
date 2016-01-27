@@ -5,13 +5,29 @@ Pi and sensors available.
 
 ## Prerequisite
 
+### Materials
+
 Every group disposes following materials:
 
-- A Raspberry Pi Model B+
-- A sensor (TBD)
-- An empty Simcard
-- A breadboard and some cables
-- Wifi keys (or Ethernet cable, TBD)
+- 1 Raspberry Pi Model B+ with 1 power adapter
+- 1 screen
+- 1 keyboard
+- 1 mouse
+- 1 Ethernet cable
+- 1 HDMI cable
+- 1 temperature & humidity sensor (TBD)
+- 1 micro SD card
+- 1 breadboard
+- Electronic jumpers
+- Plus: Wifi keys (if you guys want to play with the wifi)
+
+### Technologies
+
+In order to succeed this Hands-on, you’ll need:
+- a CloudMQTT (https://www.cloudmqtt.com/) account
+- an AWS account
+- basic knowledge of Node.js
+- basic knowledge of Python
 
 ## Step 1: Prepare your Raspberry Pi
 
