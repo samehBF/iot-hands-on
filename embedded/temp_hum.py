@@ -2,6 +2,7 @@
 
 import Adafruit_DHT
 import paho.mqtt.client as mqtt
+import json
 
 # Sensor should be set to Adafruit_DHT.DHT11,
 # Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
@@ -49,8 +50,8 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_pin)
 if humidity is not None and temperature is not None:
 	print 'Temp={0:0.1f}*C  Humidity={1:0.1f}%'.format(temperature, humidity)
 	data_buffer = json.dumps({"temp": temperature, "hum": humidity})
-		# publish data to broker
-		if mqttClient.publish("sensor", data_buffer):
-			print "data published to broker: " + str(data_buffer)
+	# publish data to broker
+	if mqttClient.publish("sensor", data_buffer):
+		print "data published to broker: " + str(data_buffer)
 else:
 	print 'Failed to get reading. Try again!'
