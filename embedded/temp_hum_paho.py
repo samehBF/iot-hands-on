@@ -2,8 +2,7 @@
 
 import Adafruit_DHT
 import paho.mqtt.client as mqtt
-import json
-import time
+import json, urlparse, time
 
 # Sensor should be set to Adafruit_DHT.DHT11
 sensor = Adafruit_DHT.DHT11
@@ -13,23 +12,18 @@ sensor_id = 1
 # connected to GPIO23.
 sensor_pin = 23
 
-# MQTT client set up
-mqtt_broker_adress = "m20.cloudmqtt.com"
-mqtt_broket_port = 12753
-
+# MQTT client setup
 mqttClient = mqtt.Client()
-mqttClient_username = "jxhnfzti"
-mqttClient_password = "feCowLGfSWA7"
-
-mqttClient.username_pw_set(mqttClient_username, mqttClient_password)
-mqttClient.connect(mqtt_broker_adress, port=mqtt_broket_port, keepalive=60, bind_address="")
+url_str = ""
+url = urlparse.urlparse(url_str)
+mqttClient.username_pw_set(url.username, url.password)
+mqttClient.connect(url.hostname, port=url.port, keepalive=60)
 
 # Loop to read data from sensor every 30 secondes
 while True:
 	# Try to grab a sensor reading.  Use the read_retry method which will retry up
 	# to 15 times to get a sensor reading (waiting 2 seconds between each retry).
 	humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_pin)
-
 	if humidity is not None and temperature is not None:
 		temp_fmt = round(temperature, 1)
 		hum_fmt = round(humidity, 1)

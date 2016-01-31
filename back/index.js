@@ -1,7 +1,8 @@
 var mqtt  = require('mqtt');
-var mqttClient = mqtt.connect('mqtt://jxhnfzti:feCowLGfSWA7@m20.cloudmqtt.com:12753');
+var mqttClient = mqtt.connect('');
  
 mqttClient.on('connect', function () {
+	console.log("MQTT connected.")
   mqttClient.subscribe('rasp_sensor');
 });
  

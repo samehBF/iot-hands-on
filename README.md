@@ -72,20 +72,41 @@ Once you are ready, plug the sensor to your Raspberry Pi:
 
 ### Read the values
 
-
+// TODO
 
 ## Step 3: Build the pipeline
 
-This part focus on explaining how we use MQTT and AWS IoT to build 
-the data pipeline.
+This part focus on explaining how we use different cloud services to build the data pipeline.
 
-### MQTT
+### Publish to MQTT
 
-// TODO publish data to MQTT broker
+One of the most popular open source MQTT broker is [Mosquitto](http://mosquitto.org/). The service [CloudMQTT](https://www.cloudmqtt.com/) we choose for this hands-on are managed Mosquitto servers in the cloud. 
 
-### AWS IoT
+Then with the 2 options of MQTT clients we choose, you can now start to estabish the connection between the Pi and the MQTT server.
 
-// TODO subscribe to the MQTT broker to get the message published by the pi
+#### Mosquitto
+
+[Mosquitto](http://mosquitto.org/documentation/python/) is considered as the most feature complete library.
+
+```
+// TODO code snippet
+```
+
+#### Paho
+
+[Paho](https://www.eclipse.org/paho/clients/python/) is a good alternative.
+
+```
+// TODO code snippet
+```
+
+### Subscribe to MQTT
+
+To verify the data is well received by the MQTT broker. Create a simple node.js application using [mqtt.js](https://github.com/mqttjs/MQTT.js).
+
+```
+// TODO code snippt
+```
 
 ## Step 4: Display your data
 
