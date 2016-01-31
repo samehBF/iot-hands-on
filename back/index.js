@@ -12,7 +12,7 @@ var sensorDB;
 mongoClient.connect(mongodbUrl, function(err, db) {
   if(!err) {
     console.log('MongoDB connected');
-    mongoCollection = db.createCollection('test', {strict:true}, function(err, collection) {});
+    mongoCollection = db.createCollection('rasp_sensor', {strict:true}, function(err, collection) {});
     sensorDB = db;
   }
 });
