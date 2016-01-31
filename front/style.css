@@ -11,7 +11,7 @@ body {
     height: 480px;
     border-radius: 10px;
     text-align: center;
-    padding: 120px 0 0 0;
+    padding-top: 120px;
 }
 
 .sensor-value {

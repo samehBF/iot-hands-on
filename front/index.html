@@ -18,16 +18,9 @@
 </div>
 <script type="application/javascript">
 (function () {
-    // websocket connection
-    var endpoint = "http://localhost:5000";
-    var socket = io.connect(endpoint);
-    socket.on('connect', function(data) {
-        socket.emit('join', 'Hello from the IoT Hands-On dashboard!');
-    });
-    socket.on('messages', function(data) {
-        console.log("Hello from the IoT Hands-On websocket server!");
-    });
-    socket.on('mqtt', function(data) {
+    var endpoint = "http://localhost:3000";
+    jQuery.getJSON(endpoint + '/sensor', function (data){
+        console.log(data);
         $('#temp-value').html(data.temperature + "°C");
         $('#hum-value').html(data.humidity + "%");
     });
