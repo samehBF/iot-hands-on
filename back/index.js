@@ -1,5 +1,5 @@
-const mqttUrl = '';
-const mongodbUrl = '';
+const mqttUrl = 'mqtt://ksybowaf:i9npMQNy1Xhd@m20.cloudmqtt.com:16301';
+const mongodbUrl = 'mongodb://samehbf:tnishr2241985@ds055495.mongolab.com:55495/sameh-iot';
 
 var express = require('express');
 var app = express();
