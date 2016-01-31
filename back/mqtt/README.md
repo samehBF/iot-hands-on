@@ -1,3 +1,0 @@
-# MQTT Broker
-
-MQTT broker.
