@@ -37,7 +37,7 @@ In order to succeed this Hands-on, you’ll need:
 
 ### Step 1.2 Set up development environment
 
-- Update and Upgrade you PI firmware:
+- Update and Upgrade you PI firmware (Do not do it now since you just downloded Noobs):
 ```
 $ sudo apt-get update
 $ sudo apt-get upgrade
