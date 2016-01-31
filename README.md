@@ -68,8 +68,21 @@ Once you are ready, plug the sensor to your Raspberry Pi:
 
 The sensor we provide is a [DHT11 type](https://www.adafruit.com/product/386) of digital temperature & humidity sensor. Install the [Adafruit Python DHT library](https://github.com/adafruit/Adafruit_Python_DHT) to read the value of the sensor.
 
-```
-// TODO code snippet
+You can either start coding directly on the raspberry pi or use ssh connection to edit the script from your own computer. Refer to `/embedded/temp_hum_mosquitto.py` for reference:
+
+```Python
+import Adafruit_DHT
+
+# Sensor should be set to Adafruit_DHT.DHT11
+sensor = Adafruit_DHT.DHT11
+sensor_id = 1
+
+# Example using a Raspberry Pi with DHT sensor
+# connected to GPIO23.
+sensor_pin = 23
+
+# TODO read the sensor data
+
 ```
 
 ## Step 3: Build the pipeline
@@ -95,43 +108,98 @@ Then with the 2 options of MQTT clients we choose, you can now start to establis
 $ sudo pip install mosquitto
 ```
 
-```
-// TODO code snippet
+- Initialize the MQTT client and publish data on the define topic:
+
+```Python
+import mosquitto
+import urlparse
+
+# Init MQTT client
+mqttClient = mosquitto.Mosquitto()
+url_str = ""
+url = urlparse.urlparse(url_str)
+mqttClient.username_pw_set(url.username, url.password)
+mqttClient.connect(url.hostname, url.port)
+
+# TODO publish data
+
 ```
 
 #### Paho
 
-[Paho](https://www.eclipse.org/paho/clients/python/) is a good alternative. Install [paho-mqtt](https://pypi.python.org/pypi/paho-mqtt/1.1) library:
+[Paho](https://www.eclipse.org/paho/clients/python/) is a good alternative. Install [paho-mqtt](https://pypi.python.org/pypi/paho-mqtt/1.1) library and discovery its usage as you want:
 ```
 $ sudo pip install paho-mqtt
-```
-
-```
-// TODO code snippet
 ```
 
 ### 3.2 Subscribe to MQTT
 
 To verify the data is well received by the MQTT broker. Create a simple node.js application using [mqtt.js](https://github.com/mqttjs/MQTT.js) to subscribe to the topic that you previously defined and listen to the message:
 
-```
-// TODO code snippt
+```Javascript
+var mqtt = require('mqtt');
+var mqttClient = mqtt.connect("");
+mqttClient.on('connect', function () {
+  console.log("MQTT connected.")
+  // TODO subscribe to the topic
+});
+ 
+mqttClient.on('message', function (topic, message) {
+  console.log("Topic: " + topic);
+  console.log("Message: " + message.toString());
+});
+
 ```
 
 ## Step 4: Store data
 
 A very important part of IoT system is to collect data for future analysis. So now it's time to store them somewhere. In the example, we choose [MongoDB](https://www.mongodb.com/) to finish the simple data insertion and query:
 
-```
-// TODO code snippet
+```Javascript
+var mongoClient = require('mongodb').MongoClient;
+mongoClient.connect(mongodbUrl, function(err, db) {
+  if(!err) {
+    console.log('MongoDB connected');
+    // TODO create collection & retrieve the db object
+  }
+});
+
+mqttClient.on('message', function (topic, message) {
+  console.log("Topic: " + topic);
+  console.log("Message: " + message.toString());
+  // TODO store data to database
+});
+
+var insertSensorData = function(db, data, cb) {
+	// TODO insert data to db
+};
+var findLastSensorDataItem = function(db, cb) {
+	// TODO fetch the last inserted data item
+};
 ```
 
 ## Step 5: Display the data
 
 For the data visualization part, we prepare a simple REST service that allows any type of dashboard to fetch data and display, using the [Express](http://expressjs.com/) framework.
 
-```
-// TODO code snippet
+```Javascript
+var express = require('express');
+var app = express();
+
+// ....
+
+// REST API
+app.get('/sensor', function (request, response) {
+  response.header('Access-Control-Allow-Origin', '*');
+  response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  response.header('Access-Control-Allow-Headers', 'Content-Type');
+  response.header('Content-Type', 'application/json');
+  // TODO fetch data and send as response
+});
+
+app.listen(3000, function () {
+  console.log('App listening on port 3000!');
+});
 ```
 
 ## Going further
