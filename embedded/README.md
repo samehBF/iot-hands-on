@@ -2,13 +2,12 @@
 
 ## Data format
 
-The format of data that the raspberry Pi send to MQTT Broker.
+The format of data that the raspberry Pi send to MQTT Broker describe in JSON:
 
 ```
 {
 	"sensor_id": 1,
-	"label": "humidity",
-	"value": 0.6,
-	"ts_second": 1450184825
+	"temperature": 24.5,
+	"humidity": 66.5
 }
 ```
