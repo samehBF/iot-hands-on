@@ -13,15 +13,12 @@ sensor_id = 1
 sensor_pin = 23
 
 # MQTT client setup
-mqtt_broker_adress = ""
-mqtt_broket_port = 
-
-mqttClient = mqtt.Client()
-mqttClient_username = ""
-mqttClient_password = ""
-
-mqttClient.username_pw_set(mqttClient_username, mqttClient_password)
-mqttClient.connect(mqtt_broker_adress, port=mqtt_broket_port, keepalive=60, bind_address="")
+mqttClient = mosquitto.Mosquitto()
+# e.g. mqtt://username:password@m20.cloudmqtt.com:port
+mqttConnectionString = ""
+url = urlparse.urlparse(mqttConnectionString)
+mqttClient.username_pw_set(url.username, url.password)
+mqttClient.connect(url.hostname, port=url.port, keepalive=60, bind_address="")
 
 # Loop to read data from sensor every 30 secondes
 while True:
