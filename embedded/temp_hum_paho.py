@@ -13,14 +13,12 @@ sensor_id = 1
 sensor_pin = 23
 
 # MQTT client setup
-mqtt_broker_adress = "m20.cloudmqtt.com"
-mqtt_broket_port = 16301
+mqtt_broker_adress = ""
+mqtt_broket_port = 
 
 mqttClient = mqtt.Client()
-mqttClient_username = "ksybowaf"
-mqttClient_password = "i9npMQNy1Xhd"
-
-
+mqttClient_username = ""
+mqttClient_password = ""
 
 mqttClient.username_pw_set(mqttClient_username, mqttClient_password)
 mqttClient.connect(mqtt_broker_adress, port=mqtt_broket_port, keepalive=60, bind_address="")
