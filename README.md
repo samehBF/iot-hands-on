@@ -31,10 +31,11 @@ In order to succeed this Hands-on, you’ll need:
 
 ## Step 1: Prepare your Raspberry Pi
 
-- [Set up your Raspberry Pi with Noobs](https://www.raspberrypi.org/help/noobs-setup/)
-- Set up python development environment on Raspberry Pi
+### Install OS for your Pi
 
-### Python
+- [Set up your Raspberry Pi with Noobs](https://www.raspberrypi.org/help/noobs-setup/)
+
+### Set up development environment
 
 - Update and Upgrade you PI firmware:
 ```
@@ -44,25 +45,7 @@ $ sudo apt-get upgrade
 
 - Install python environment:
 ```
-$ python -V 
-$ sudo apt-get install python-dev python-pip python-setuptools
-```
-
-- Install [WiringPi](http://wiringpi.com/)'s python wrapper [WiringPi-Python](https://github.com/WiringPi/WiringPi-Python). 
-It is used for reading from / writing to GPIO pins in a similar way to arduino, 
-a good alternative to [RPi.GPIO](https://pypi.python.org/pypi/RPi.GPIO).
-```
-$ sudo pip install wiringpi2
-```
-
-- After the installation, check if the library is well installed. In the python 
-interactive shell, import module and check version. `piBoardRev()` should display
-value `2`:
-
-```
-$ python
->> import wiringpi2 as wiringpi
->> wiringpi.piBoardRev()
+$ sudo apt-get install build-essential python-dev
 ```
 
 - Install [Adafruit Python DHT library](https://github.com/adafruit/Adafruit_Python_DHT) 
@@ -73,19 +56,23 @@ which will be used to read the value of the temperature & humidity sensor.
 $ sudo pip install paho-mqtt
 ```
 
-## Step 2: Read data from your sensor
+## Step 2: Read data from the sensor
 
-Get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
+### Wire the sensor
+
+Every group possesses a digital temperature and humidity sensor. Before starting 
+wiring the jumbers, get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
 or with some more interactive [Pinout map](http://pinout.xyz/).
 
-- Plug the sensor to your Raspberry Pi:
-	- VCC to Pin 2
-	- GND to Pin 6
-	- Input to GPIO23 (Pin 16)
+Once you are ready, plug the sensor to your Raspberry Pi:
 
-### Example
+- VCC to Pin 2
+- GND to Pin 6
+- Input to GPIO23 (Pin 16)
 
-// TODO
+### Read the values
+
+
 
 ## Step 3: Build the pipeline
 
