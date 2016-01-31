@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <title>IoT Hands-On</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+</head>
+<body>
+<div class="studio">
+    <div class="sensor-container">
+        <img id="temp-icon" class="sensor-icon" src="img/temp.svg" alt=""/>
+        <span id="temp-value" class="sensor-value">0</span>
+        <img id="hum-icon" class="sensor-icon" src="img/humidity.svg" alt=""/>
+        <span id="hum-value" class="sensor-value">0</span>
+    </div>
+</div>
+<script type="application/javascript">
+(function () {
+    // websocket connection
+    var endpoint = "http://localhost:5000";
+    var socket = io.connect(endpoint);
+    socket.on('connect', function(data) {
+        socket.emit('join', 'Hello from the IoT Hands-On dashboard!');
+    });
+    socket.on('messages', function(data) {
+        console.log("Hello from the IoT Hands-On websocket server!");
+    });
+    socket.on('mqtt', function(data) {
+        $('#temp-value').html(data.temperature + "°C");
+        $('#hum-value').html(data.humidity + "%");
+    });
+})();
+</script>
+</body>
+</html>

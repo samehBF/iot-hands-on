@@ -1,0 +1,25 @@
+body {
+    background-color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
+    color: #FFFFFF;
+    margin: 2%;
+    padding: 0;
+}
+
+.sensor-container {
+    background: #6C1D5F;
+    height: 480px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 120px 0 0 0;
+}
+
+.sensor-value {
+    font-size: 8em;
+    margin: 20px;
+}
+
+.sensor-icon {
+    width: 200px;
+    height: 200px;
+}
