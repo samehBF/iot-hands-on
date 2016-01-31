@@ -38,7 +38,7 @@ while True:
 		print 'Temp=%s*C  Humidity=%s%%' % (temp_fmt, hum_fmt)
 
 		# publish data to broker
-		data = json.dumps({"sensor_id", sensor_id, "temperature": temp_fmt, "humidity": hum_fmt})
+		data = json.dumps({"sensor_id": sensor_id, "temperature": temp_fmt, "humidity": hum_fmt})
 		if mqttClient.publish("rasp_sensor", data):
 			print "Data published to broker: " + str(data)
 		else:
