@@ -25,7 +25,7 @@ Every group disposes following materials:
 
 In order to succeed this Hands-on, you’ll need:
 - a CloudMQTT (https://www.cloudmqtt.com/) account
-- an AWS account
+- a MongoLab (https://mongolab.com/home) account
 - basic knowledge of Node.js
 - basic knowledge of Python
 
@@ -37,7 +37,7 @@ In order to succeed this Hands-on, you’ll need:
 
 ### Step 1.2 Set up development environment
 
-- Update and Upgrade you PI firmware (Do not do it now since you just downloded Noobs):
+- Update and Upgrade you PI firmware:
 ```
 $ sudo apt-get update
 $ sudo apt-get upgrade
@@ -55,6 +55,7 @@ $ sudo apt-get install build-essential python-dev
 Every group possesses a digital temperature and humidity sensor. Before starting 
 wiring the jumbers, get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
 or with some more interactive [Pinout map](http://pinout.xyz/).
+![alt tag](./iot-hands-on/embedded)
 
 ### Step 2.2 Make your electronic schema
 
