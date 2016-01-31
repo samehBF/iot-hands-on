@@ -27,17 +27,13 @@ mqttClient.on('connect', function () {
 mqttClient.on('message', function (topic, message) {
   console.log("Topic: " + topic);
 	console.log("Message: " + message.toString());
-
   jsonMessage = JSON.parse(message)
   jsonMessage['date'] = new Date().toISOString()
-  insertSensorData(sensorDB, jsonMessage, function(result) {
-      console.log(result);
-  });
+  insertSensorData(sensorDB, jsonMessage, function(result) {});
 });
 
 // REST API
 app.get('/sensor', function (request, response) {
-  console.log("Get /sensor");
   response.header('Access-Control-Allow-Origin', '*');
   response.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   response.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -54,7 +50,11 @@ app.listen(3000, function () {
 // db helper
 var insertSensorData = function(db, data, cb) {
   db.collection('rasp_sensor').insertOne(data, function(err, result) {
-    console.log('Inserted a document into the rasp_sensor collection.');
+    if (!err) {
+      console.log('Insert data to db succeeded');
+    } else {
+      console.log('Failed to insert data.')
+    }
   });
 };
 
@@ -64,6 +64,8 @@ var findLastSensorDataItem = function(db, cb) {
     if (doc != null) {
       console.log(doc);
       cb(doc);
+    } else {
+      console.log('Fetch data failed.');
     }
   });
 };
