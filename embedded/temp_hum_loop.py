@@ -26,15 +26,13 @@ mqttClient.connect(mqtt_broker_adress, port=mqtt_broket_port, keepalive=60, bind
 
 # Loop to read data from sensor every 30 secondes
 while True:
-	time.sleep(30)
-
 	# Try to grab a sensor reading.  Use the read_retry method which will retry up
 	# to 15 times to get a sensor reading (waiting 2 seconds between each retry).
 	humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_pin)
 
 	if humidity is not None and temperature is not None:
-		temp_fmt = '{0:0.1f}'.format(temperature)
-		hum_fmt = '{0:0.1f}'.format(humidity)
+		temp_fmt = round(temperature, 1)
+		hum_fmt = round(humidity, 1)
 		print 'Temp=%s*C  Humidity=%s%%' % (temp_fmt, hum_fmt)
 
 		# publish data to broker
@@ -45,4 +43,6 @@ while True:
 			print "Failed to publish data to broker"
 	else:
 		print 'Failed to get reading. Try again!'
+
+	time.sleep(30)
 

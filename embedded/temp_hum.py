@@ -32,8 +32,8 @@ humidity, temperature = Adafruit_DHT.read_retry(sensor, sensor_pin)
 # guarantee the timing of calls to read the sensor).  
 # If this happens try again!
 if humidity is not None and temperature is not None:
-	temp_fmt = '{0:0.1f}'.format(temperature)
-	hum_fmt = '{0:0.1f}'.format(humidity)
+	temp_fmt = round(temperature, 1)
+	hum_fmt = round(humidity, 1)
 	print 'Temp=%s*C  Humidity=%s%%' % (temp_fmt, hum_fmt)
 	
 	# publish data to broker
