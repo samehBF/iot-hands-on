@@ -55,9 +55,11 @@ $ sudo apt-get install build-essential python-dev
 Every group possesses a digital temperature and humidity sensor. Before starting 
 wiring the jumbers, get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
 or with some more interactive [Pinout map](http://pinout.xyz/).
-![alt tag](./iot-hands-on/embedded)
+
 
 ### Step 2.2 Make your electronic schema
+
+You can follow this schema to create yours: ![Schema](https://github.com/xebia-france/iot-hands-on/blob/master/embedded/Circuito-Raspberry-Pi-DHT112.png)
 
 Once you are ready, plug the sensor to your Raspberry Pi:
 
