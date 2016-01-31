@@ -3,6 +3,9 @@
 import Adafruit_DHT
 import paho.mqtt.client as mqtt
 import json
+import wiringpi2 as wiringpi  
+
+wiringpi.wiringPiSetupGpio()
 
 # Sensor should be set to Adafruit_DHT.DHT11,
 # Adafruit_DHT.DHT22, or Adafruit_DHT.AM2302.
