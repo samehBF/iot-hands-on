@@ -9,7 +9,7 @@ Pi and sensors available.
 
 Every group disposes following materials:
 
-- 1 Raspberry Pi Model B+ with 1 power adapter
+- 1 Raspberry Pi 2 Model B+ with 1 power adapter
 - 1 screen
 - 1 keyboard
 - 1 mouse
@@ -56,14 +56,13 @@ Every group possesses a digital temperature and humidity sensor. Before starting
 wiring the jumbers, get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
 or with some more interactive [Pinout map](http://pinout.xyz/).
 
-
 ### Step 2.2 Make your electronic schema
 
 Once you are ready, plug the sensor to your Raspberry Pi:
 
-- VCC to Pin 2
-- GND to Pin 6
-- Input to GPIO23 (Pin 16)
+- VCC to physical pin 2
+- GND to physical pin 6
+- Input to GPIO23 (physical pin 16)
 
 ### Step 2.3 Read the values
 
