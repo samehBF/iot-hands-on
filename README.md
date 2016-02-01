@@ -59,8 +59,6 @@ or with some more interactive [Pinout map](http://pinout.xyz/).
 
 ### Step 2.2 Make your electronic schema
 
-You can follow this schema to create yours: ![Schema](https://github.com/xebia-france/iot-hands-on/blob/master/embedded/Circuito-Raspberry-Pi-DHT112.png)
-
 Once you are ready, plug the sensor to your Raspberry Pi:
 
 - VCC to Pin 2
