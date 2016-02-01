@@ -68,8 +68,7 @@ Once you are ready, plug the sensor to your Raspberry Pi:
 
 The sensor we provide is a [DHT11 type](https://www.adafruit.com/product/386) of digital temperature & humidity sensor. Install the [Adafruit Python DHT library](https://github.com/adafruit/Adafruit_Python_DHT) to read the value of the sensor.
 
-You can either start coding directly on the raspberry pi or use ssh connection to edit the script from your own computer (configure your Pi to enable ssh connection).
-Refer to `/embedded/temp_hum_paho.py` for reference:
+You can either start coding directly on the raspberry pi or use ssh connection to edit the script from your own computer (configure your Pi to enable ssh connection). Refer to `/embedded/sensor.py` for reference:
 
 ```Python
 import Adafruit_DHT
