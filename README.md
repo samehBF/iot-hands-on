@@ -69,7 +69,8 @@ Once you are ready, plug the sensor to your Raspberry Pi:
 
 The sensor we provide is a [DHT11 type](https://www.adafruit.com/product/386) of digital temperature & humidity sensor. Install the [Adafruit Python DHT library](https://github.com/adafruit/Adafruit_Python_DHT) to read the value of the sensor.
 
-You can either start coding directly on the raspberry pi or use ssh connection to edit the script from your own computer. Refer to `/embedded/temp_hum_mosquitto.py` for reference:
+You can either start coding directly on the raspberry pi or use ssh connection to edit the script from your own computer (configure your Pi to enable ssh connection).
+Refer to `/embedded/temp_hum_paho.py` for reference:
 
 ```Python
 import Adafruit_DHT
@@ -98,25 +99,22 @@ Before pushbling data to the MQTT broker, you have to define:
 - the topic name
 - the data structure
 
-Then with the 2 options of MQTT clients we choose, you can now start to establish the connection between the Pi and the MQTT broker.
+#### Paho
 
-#### Mosquitto
+As an MQTT client, you can use [Paho](https://www.eclipse.org/paho/clients/python/) which  is a good MQTT client. 
 
-[Mosquitto](http://mosquitto.org/documentation/python/) is considered as the most feature complete library.
-
-- Install the library via pip:
+- Install the library:
 ```
-$ sudo pip install mosquitto
+$ sudo pip install paho-mqtt
 ```
-
 - Initialize the MQTT client and publish data on the define topic:
 
 ```Python
-import mosquitto
+import paho.mqtt.client as mqtt
 import urlparse
 
 # Init MQTT client
-mqttClient = mosquitto.Mosquitto()
+mqttClient = mqtt.Client()
 url_str = ""
 url = urlparse.urlparse(url_str)
 mqttClient.username_pw_set(url.username, url.password)
@@ -124,13 +122,6 @@ mqttClient.connect(url.hostname, url.port)
 
 # TODO publish data
 
-```
-
-#### Paho
-
-[Paho](https://www.eclipse.org/paho/clients/python/) is a good alternative. Install [paho-mqtt](https://pypi.python.org/pypi/paho-mqtt/1.1) library and discovery its usage as you want:
-```
-$ sudo pip install paho-mqtt
 ```
 
 ### 3.2 Subscribe to MQTT
