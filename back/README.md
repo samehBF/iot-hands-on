@@ -13,3 +13,4 @@ The backend service will be in charge of following tasks:
 	- [Express](http://expressjs.com/)
 	- [Socket.io](http://socket.io/)
 - MongoDB
+- MQTT Client to read data from broker

@@ -15,7 +15,7 @@ Every group disposes following materials:
 - 1 mouse
 - 1 Ethernet cable
 - 1 HDMI cable
-- 1 temperature & humidity sensor (TBD)
+- 1 DHT11 temperature & humidity sensor
 - 1 micro SD card
 - 1 breadboard
 - Electronic jumpers

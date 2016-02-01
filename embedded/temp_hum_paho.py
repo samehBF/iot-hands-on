@@ -13,7 +13,7 @@ sensor_id = 1
 sensor_pin = 23
 
 # MQTT client setup
-mqttClient = mosquitto.Mosquitto()
+mqttClient = mqtt.Client()
 # e.g. mqtt://username:password@m20.cloudmqtt.com:port
 mqttConnectionString = ""
 url = urlparse.urlparse(mqttConnectionString)

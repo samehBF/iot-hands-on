@@ -1,6 +1,7 @@
 const mqttUrl = '';
 const mongodbUrl = '';
 
+// Required noode modules 
 var express = require('express');
 var app = express();
 var mqtt = require('mqtt');
@@ -8,7 +9,7 @@ var mongoClient = require('mongodb').MongoClient;
 
 var sensorDB;
 
-// connect to mongo db
+// connect to mongo db and create a collection
 mongoClient.connect(mongodbUrl, function(err, db) {
   if(!err) {
     console.log('MongoDB connected');
@@ -17,7 +18,7 @@ mongoClient.connect(mongodbUrl, function(err, db) {
   }
 });
 
-// connect to MQTT broker
+// connect to MQTT broker and receive messages
 var mqttClient = mqtt.connect(mqttUrl);
 mqttClient.on('connect', function () {
   console.log("MQTT connected.")
@@ -47,7 +48,7 @@ app.listen(3000, function () {
   console.log('App listening on port 3000!');
 });
 
-// db helper
+// Insert data to db
 var insertSensorData = function(db, data, cb) {
   db.collection('rasp_sensor').insertOne(data, function(err, result) {
     if (!err) {
@@ -58,6 +59,7 @@ var insertSensorData = function(db, data, cb) {
   });
 };
 
+// Get the last sensor data
 var findLastSensorDataItem = function(db, cb) {
   var cursor = db.collection('rasp_sensor').find().sort({'date': -1}).limit(1);
   cursor.each(function(err, doc) {
