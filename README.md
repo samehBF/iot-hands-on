@@ -85,6 +85,12 @@ sensor_pin = 23
 
 ```
 
+Launch your sensor script by
+
+```
+$ sudo python sensor.py
+```
+
 ## Step 3: Build the pipeline
 
 This part focus on explaining how we use different cloud services to build the data pipeline.
