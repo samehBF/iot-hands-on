@@ -119,8 +119,9 @@ import urlparse
 
 # Init MQTT client
 mqttClient = mqtt.Client()
-url_str = ""
-url = urlparse.urlparse(url_str)
+# e.g. mqtt://username:password@m20.cloudmqtt.com:port
+mqttConnectionString = ""
+url = urlparse.urlparse(mqttConnectionString)
 mqttClient.username_pw_set(url.username, url.password)
 mqttClient.connect(url.hostname, url.port)
 
