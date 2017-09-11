@@ -199,9 +199,3 @@ app.listen(3000, function () {
 });
 ```
 
-## Going further
-
-- Data aggregation: aggregate the data collected from the past period to generate more interesting visulization
-- Websocket server to push data in realtime
-- Deploy on the cloud service
-
