@@ -1,6 +1,6 @@
-# XKE IoT Hands On
+# EPF: TP IoT
 
-This hands-on aims at setting up a mini IoT system in 2 hours, using Raspberry 
+This hands-on aims at setting up a mini IoT system in 3 hours, using Raspberry 
 Pi and sensors available.
 
 ## Prerequisite
@@ -25,7 +25,7 @@ Every group disposes following materials:
 
 In order to succeed this Hands-on, you’ll need:
 - a CloudMQTT (https://www.cloudmqtt.com/) account
-- a MongoLab (https://mongolab.com/home) account
+- a MongoLab (https://mlab.com/home) account
 - basic knowledge of Node.js
 - basic knowledge of Python
 
@@ -150,7 +150,7 @@ mqttClient.on('message', function (topic, message) {
 
 ## Step 4: Store data
 
-A very important part of IoT system is to collect data for future analysis. So now it's time to store them somewhere. In the example, we choose [MongoDB](https://www.mongodb.com/) to finish the simple data insertion and query:
+A very important part of IoT system is to collect data for future analysis. So now it's time to store them somewhere. In the example, we choose [MongoDB](https://mlab.com/home) to finish the simple data insertion and query:
 
 ```Javascript
 var mongoClient = require('mongodb').MongoClient;
