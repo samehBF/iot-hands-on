@@ -34,6 +34,8 @@ In order to succeed this Hands-on, you’ll need:
 ### Step 1.1 Install OS for your Pi
 
 - [Set up your Raspberry Pi with Noobs](https://www.raspberrypi.org/help/noobs-setup/)
+- [Download Noob to install Rasbian](https://www.raspberrypi.org/downloads/)
+- [Have a look to this Noobs install tutorial](https://www.raspberrypi.org/learning/noobs-install/worksheet/)
 
 ### Step 1.2 Set up development environment
 
