@@ -55,7 +55,7 @@ $ sudo apt-get install build-essential python-dev
 ### Step 2.1 Get to know your Raspberry PI GPIOs
 
 Every group possesses a digital temperature and humidity sensor. Before starting 
-wiring the jumbers, get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://www.raspberrypi.org/documentation/usage/gpio/) 
+wiring the jumbers, get to know the Raspberry Pi's [GPIO (General Purpose Input/Output) pins](https://docs.microsoft.com/en-us/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) 
 or with some more interactive [Pinout map](http://pinout.xyz/).
 
 ### Step 2.2 Make your electronic schema
@@ -75,8 +75,8 @@ You can either start coding directly on the raspberry pi or use ssh connection t
 ```Python
 import Adafruit_DHT
 
-# Sensor should be set to Adafruit_DHT.DHT11
-sensor = Adafruit_DHT.DHT11
+# Sensor should be set to Adafruit_DHT.DHT22
+sensor = Adafruit_DHT.DHT22
 sensor_id = 1
 
 # Example using a Raspberry Pi with DHT sensor
