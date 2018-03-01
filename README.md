@@ -68,15 +68,15 @@ Once you are ready, plug the sensor to your Raspberry Pi:
 
 ### Step 2.3 Read the values
 
-The sensor we provide is a [DHT22 type](https://www.adafruit.com/product/386) of digital temperature & humidity sensor. Install the [Adafruit Python DHT library](https://github.com/adafruit/Adafruit_Python_DHT) to read the value of the sensor.
+The sensor we provide is a [DHT11 type](https://www.adafruit.com/product/386) of digital temperature & humidity sensor. Install the [Adafruit Python DHT library](https://github.com/adafruit/Adafruit_Python_DHT) to read the value of the sensor.
 
 You can either start coding directly on the raspberry pi or use ssh connection to edit the script from your own computer (configure your Pi to enable ssh connection). Refer to `/embedded/sensor.py` for reference:
 
 ```Python
 import Adafruit_DHT
 
-# Sensor should be set to Adafruit_DHT.DHT22
-sensor = Adafruit_DHT.DHT22
+# Sensor should be set to Adafruit_DHT.DHT11
+sensor = Adafruit_DHT.DHT11
 sensor_id = 1
 
 # Example using a Raspberry Pi with DHT sensor
